@@ -105,16 +105,15 @@ void Queue<T>::PushQueue(T item, int priority)
 		delete[] _priority;
 		_data = new T[++_size];
 		_priority = new int[_size];
-		for (size_t i = 0, z = 0,j=0; i < _size; i++,z++)
+		for (size_t i = 0, z = 0,j=0; z < _size; i++,z++)
 		{
 			if ((priority > tempPr[i]) &&( j == 0))
 			{
 				_data[i] = item;
 				this->_priority[i] = priority;
-				//z++; 
-				//i--;
+				z++; 
 				j++;
-				continue;
+				if(z==_size) continue;
 			}
 			this->_data[z] = tempItem[i];
 			this->_priority[z] = tempPr[i];
